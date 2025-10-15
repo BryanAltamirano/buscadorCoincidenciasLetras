@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Buscador de coincidencias</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    /* Fondo con gradiente suave */
+    body {
+      background: linear-gradient(135deg, #1f2a38, #2e3d5b);
+      color: #f8f9fa;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    /* Card central */
+    .buscador-card {
+      background: rgba(43, 43, 69, 0.95);
+      border-radius: 15px;
+      padding: 2rem;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease;
+    }
+
+    .buscador-card:hover {
+      transform: translateY(-5px);
+    }
+
+    h1 {
+      color: #00b4d8;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      text-shadow: 0 0 15px rgba(0,180,216,0.5);
+    }
+
+    label {
+      font-weight: 600;
+      color: #dbe4ff;
+    }
+
+    textarea, input {
+      background-color: rgba(60, 60, 90, 0.9);
+      color: #f1f1f1;
+      border: 1px solid #00b4d8;
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    textarea::placeholder,
+    input::placeholder {
+      color: #cfd8ff;
+      opacity: 1;
+    }
+
+    textarea:focus, input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #00b4d8;
+      border-color: #00b4d8;
+    }
+
+    button {
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    #btnBuscar {
+      background: linear-gradient(45deg, #00b4d8, #0077b6);
+      border: none;
+      color: white;
+    }
+
+    #btnBuscar:hover {
+      background: linear-gradient(45deg, #0077b6, #00b4d8);
+      transform: scale(1.05);
+    }
+
+    #btnLimpiar {
+      background: linear-gradient(45deg, #d33f49, #a82b32);
+      border: none;
+      color: white;
+    }
+
+    #btnLimpiar:hover {
+      background: linear-gradient(45deg, #a82b32, #d33f49);
+      transform: scale(1.05);
+    }
+
+    #resultado {
+      background-color: rgba(20, 20, 40, 0.95);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      width: 100%;
+      min-height: 150px;
+      color: #fff;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+      font-size: 1rem;
+    }
+
+    .resaltado {
+      background-color: #ffb703;
+      color: #1a1a1a;
+      font-weight: 700;
+      border-radius: 4px;
+      padding: 2px 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="buscador-card">
+    <h1>Buscador de coincidencias de texto</h1>
+
+    <div class="mb-3">
+      <label class="form-label">Texto principal</label>
+      <textarea id="texto" class="form-control" rows="5" placeholder="Ingrese el texto donde se realizará la búsqueda"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Término a buscar</label>
+      <input id="busqueda" type="text" class="form-control" placeholder="Ingrese la palabra o frase a buscar">
+    </div>
+
+    <div class="d-flex justify-content-center gap-3">
+      <button id="btnBuscar">Buscar coincidencias</button>
+      <button id="btnLimpiar">Limpiar campos</button>
+    </div>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script src="bundle.js"></script>
+</body>
+</html>
